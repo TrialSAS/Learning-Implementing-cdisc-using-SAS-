@@ -64,6 +64,8 @@ run;
 
 /*This DATA step defines the SAS work EMPTY_** dataset, which is the shell of the domain
 that we will populate later.*/
+/*此数据步骤将需要的域元数据加载到域中每个变量的VAR*、LABEL*、LENGTH*和TYPE*宏参数中，
+以便在下一步中使用*/
 data EMPTY_&dataset;
 	%do i=1 %to &vars;
 		attrib &&var&i label = "&&label&i"
