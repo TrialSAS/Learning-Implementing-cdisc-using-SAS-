@@ -18,6 +18,8 @@ run;
 
 /*This DATA step loads the domain metadata that we need into VAR*, LABEL*, LENGTH*,
 and TYPE* macro parameters for each variable in the domain to be used in the next step.*/
+/*此数据步骤将需要的域元数据加载到域中每个变量的VAR*、LABEL*、LENGTH*和TYPE*宏参数中，
+以便在下一步中使用*/
 data _null_;
 	set _temp nobs=nobs end=eof;
 	/*nobs=变量，   nobs=创建一个临时变量，值为观测的总数。*/
@@ -64,8 +66,6 @@ run;
 
 /*This DATA step defines the SAS work EMPTY_** dataset, which is the shell of the domain
 that we will populate later.*/
-/*此数据步骤将需要的域元数据加载到域中每个变量的VAR*、LABEL*、LENGTH*和TYPE*宏参数中，
-以便在下一步中使用*/
 data EMPTY_&dataset;
 	%do i=1 %to &vars;
 		attrib &&var&i label = "&&label&i"
