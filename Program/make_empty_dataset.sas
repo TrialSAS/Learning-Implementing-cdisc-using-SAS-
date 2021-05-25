@@ -14,6 +14,10 @@ proc sort
 run;
 
 %global &dataset.KEEPSTRING;
+
+
+/*This DATA step loads the domain metadata that we need into VAR*, LABEL*, LENGTH*,
+and TYPE* macro parameters for each variable in the domain to be used in the next step.*/
 data _null_;
 	set _temp nobs=nobs end=eof;
 	/*nobs=变量，   nobs=创建一个临时变量，值为观测的总数。*/
@@ -45,6 +49,8 @@ data _null_;
 	else 
 		put "ERR" "OR:not using a valid ODM type." type=;
 
+	/*This section is responsible for defining the **KEEPSTRING global macro variable, which
+will be used in the actual domain creation code later.*/
 	length keepstring $32767;
 	retain keepstring;
 	keepstring=compress(keepstring)||"|" ||left(variable);
@@ -56,6 +62,8 @@ data _null_;
 		/*大写*/   /*translate()替换字符串中指定的character。这里换成"|"*/
 run;
 
+/*This DATA step defines the SAS work EMPTY_** dataset, which is the shell of the domain
+that we will populate later.*/
 data EMPTY_&dataset;
 	%do i=1 %to &vars;
 		attrib &&var&i label = "&&label&i"
