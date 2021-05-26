@@ -1,0 +1,1 @@
+%make_sort_order(metadatafile=D:\SASShare\Data\github\Learning-Implementing-cdisc-using-SAS-\Program\SDTM_METADATA.xlsx,dataset=DM);

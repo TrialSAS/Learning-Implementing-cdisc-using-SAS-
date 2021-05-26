@@ -1,0 +1,48 @@
+                                                             SAS 系统        2021年 5月26日 星期三 下午01时13分00秒   1
+
+                                                         CONTENTS PROCEDURE
+
+                                 数据集名        SOURCE.DOSING             观测           84
+                                 成员类型        DATA                      变量           11
+                                 引擎              V9                        索引           0 
+                                 创建时间        2021-05-26 13:13:27       观测长度     88
+                                 上次修改时间  2021-05-26 13:13:27       删除的观测  0 
+                                 保护                                        已压缩        NO
+                                 数据集类型                               已排序        NO
+                                 标签                                                           
+                                 数据表示法     WINDOWS_64                                   
+                                 编码              utf-8  Unicode (UTF-8)                       
+
+
+                                                     引擎/主机相关信息
+
+          数据集页面大小     65536                                                                                 
+          数据集页数           1                                                                                     
+          首数据页              1                                                                                     
+          每页最大观测数     743                                                                                   
+          首数据页的观测数  84                                                                                    
+          数据集修复数        0                                                                                     
+          ExtendObsCounter          YES                                                                                   
+          文件名                 D:\SASShare\Data\github\Learning-Implementing-cdisc-using-SAS-\Program\dosing.sas7bdat
+          创建版本              9.0401M6                                                                              
+          创建主机              X64_10HOME                                                                            
+          所有者名              DESKTOP-7KPAJB8\UR-BJ-011                                                             
+          文件大小              128KB                                                                                 
+          文件大小（字节）  131072                                                                                
+
+
+                                              按字母排序的变量和属性列表
+ 
+                           #    变量       类型    长度    输出格式    标签
+
+                           4    dailydose    数值         8                    Daily dose taken(pills) 
+                          10    enddd        数值         8                    Day of End Dose         
+                           3    enddt        数值         8    MMDDYY10.       Dosing end date         
+                           9    endmm        数值         8                    Month of End Dose       
+                          11    endyy        数值         8                    Year of End Dose        
+                           7    startdd      数值         8                    Day of Start Dose       
+                           2    startdt      数值         8    MMDDYY10.       Dosing start date       
+                           6    startmm      数值         8                    Month of Start Dose     
+                           8    startyy      数值         8                    Year of Start Dose      
+                           1    subject      数值         8                    Subject Number          
+                           5    uniqueid     字符         6                    Company Wide Subject 	ID

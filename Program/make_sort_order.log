@@ -1,0 +1,72 @@
+1                                                            SAS 系统            2021年 5月26日 星期三 上午10时57分00秒
+
+NOTE: 无法打开 SASUSER.REGSTRY。系统将改为打开 WORK.REGSTRY。
+NOTE: 所有注册表的更改将在会话结束后丢失。
+
+WARNING: 无法将 SASUSER 注册表复制到 WORK 注册表中。因此在该会话过程中，
+         您不会看到注册表定制情况。
+ERROR: 期望第 1 页，而得到的是第 -1 页。
+ERROR: 读取“SASUSER.PROFILE.CATALOG”时发生页面验证错误。
+NOTE: 无法打开 SASUSER.PROFILE。系统将改为打开 WORK.PROFILE。
+NOTE: 所有配置文件的更改将在会话结束后丢失。
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6 MBCS3170) 
+      Licensed to CNAM LICENCE CAMPUS, Site 70159246.
+NOTE: 该会话正在平台 X64_10HOME  上执行。
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+      SAS/ETS 15.1
+      SAS/IML 15.1
+      SAS/QC 15.1
+
+NOTE: Additional host information:
+
+ X64_10HOME WIN 10.0.19041  Workstation
+
+NOTE: “SAS 初始化”所用时间:
+      实际时间          0.41 秒
+      CPU 时间          0.28 秒
+      
+1          %macro make_sort_order(metadatafile=,dataset=);
+2          	
+3          	proc import
+4          		datafile = "&metadatafile"
+5          		out = _temp
+6          		dbms = excelcs
+7          		replace;
+8          		sheet = "VARIABLE_METADATA";
+9          	run;
+10         
+11         	proc sort
+12         		data = _temp;
+13         		where keysequence ne . and domain="&dataset";
+14         		by keysequence;
+15         	run;
+16         
+17         	%global &dataset.sortstring;
+18         	data test;
+19         		set _temp end =  eof;
+20         		length domainkeys $200;
+21         		retain domainkeys '';
+22         
+23         		domainkeys=trim(domainkeys)||''||trim(put(variable,8.));
+24         
+25         		if eof then
+26         			call symputx(compress("&dataset"||"SORTSTRING"),domainkeys);
+27         	run;
+2                                                            SAS 系统            2021年 5月26日 星期三 上午10时57分00秒
+
+28         %mend make_sort_order;
+29         	
+
+ERROR: 打印以下页时出错: 1.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: “SAS 系统”所用时间:
+      实际时间          0.42 秒
+      CPU 时间          0.31 秒
+      
