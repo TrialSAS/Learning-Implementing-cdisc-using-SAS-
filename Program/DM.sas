@@ -78,9 +78,11 @@ data dm;
 	country="USA";
 run;
 
-proc contents data=dm;
+
+PROC SORT	
+	data = dm(keep = &DMKEEPSTRING)
+	out =target.dm;
+		by &DMSORTSTRING;
 run;
-
-
 
 			
